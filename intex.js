@@ -1,74 +1,29 @@
-//Load module node-persist
-var storage = require('node-persist');
+// Define the array to hold to-do items
+let todos = [];
 
-// Ham khoi tao
-storage.initSync({
-  dir: 'students'
-});
-
-function getAllStudents(){
-  var students = storage.getItemSync('students');
-  if(typeof students === "undefined"){
-    return [];
-  }
-  return students;
+// Function to add a new to-do item
+function addTodo(item) {
+  todos.push(item);
+  console.log('Added:', item);
 }
 
-function getStudent(studentId){
-  var students = getAllStudents();
-  var matchedStudent = null;
-  for(var i=0;i<students.length;i++){
-    if(students[i].id === studentId){
-      matchedStudent = students[i];
-      break;
-    }
-  }
-  return matchedStudent;
+// Function to remove a to-do item
+function removeTodo(index) {
+  const item = todos.splice(index, 1);
+  console.log('Removed:', item);
 }
 
-function addStudent(id, fullname, age){
-  var students = getAllStudents();
-  students.push({
-    id: id,
-    fullname: fullname,
-    age: age
-  });
-  storage.setItemSync('students', students);
-}
-
-function removeStudent(studentId){
-  var students = getAllStudents();
-  for(var i=0; i<students.length;i++){
-    if(students[i] === studentId){
-      students.splice(i, 1);
-    }
-  }
-  storage.setItemSync('students', students);
-}
-
-function editStudent(studentId, studentName, studentAge){
-  var students = getAllStudents();
-  for(var i=0; i<students.length; i++){
-    students[i].fullname = studentName;
-    students[i].age = studentAge;
-  }
-  storage.setItemSync('students', students);
-}
-
-function showStudents(){
-  var students = getAllStudents();
-  students.forEach(function(student){
-    console.log('Student: ' + student.fullname + '. He/she is ' + student.age + ' years old');
+// Function to display the to-do list
+function displayTodos() {
+  console.log('Your to-do list:');
+  todos.forEach((item, index) => {
+    console.log(`${index + 1}: ${item}`);
   });
 }
 
-// Thêm sinh viên
-addStudent(1, 'Cuong', 20);
-addStudent(2, 'Kinh', 21);
-addStudent(3, 'Chinh', 22);
-addStudent(4, 'Quyen', 23);
-
-// Hiển thị danh sách sinh viên
-showStudents();
-storage.clearSync();
-
+// Example usage:
+addTodo('Learn JavaScript');
+addTodo('Read about Node.js');
+displayTodos();
+removeTodo(0);
+displayTodos();
