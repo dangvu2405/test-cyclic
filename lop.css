@@ -1,0 +1,31 @@
+
+.vb{
+margin-top: 10px;
+h1{
+    color:aliceblue;
+    width: 30%;
+}
+}
+.box{
+color:aliceblue;
+width: auto;
+height: auto;
+background-color: #ba2a2a;
+margin:5%;
+padding: 10px 30px 10px 30px;
+border-radius: 5px;
+box-shadow: 0px 0px 5px 5px #8888;
+}
+div{
+    background-image: url("https://th.bing.com/th/id/OIP.pzcuXAuQ_XnifQbiUBLQiwHaEo?rs=1&pid=ImgDetMain");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.8 #8888 ;
+    color:aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
